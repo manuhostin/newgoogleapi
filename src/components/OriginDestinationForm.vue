@@ -1,7 +1,7 @@
 <template>
   <section class="origin-destination-form">
     <div class="ui form">
-      <div class="ui message red small" v-show="error">{{error}}</div>
+      <div class="ui message red small" v-show="error">{{ error }}</div>
       <div class="two fields">
         <div class="field">
           <div class="ui left icon input">
@@ -17,9 +17,11 @@
         </div>
         <button
           class="ui button small blue"
-          :class="{loading:spinner}"
+          :class="{ loading: spinner }"
           @click="calculateButtonPressed"
-        >Vá</button>
+        >
+          Vá
+        </button>
       </div>
     </div>
   </section>
@@ -36,7 +38,7 @@
 
 <script>
 import axios from "axios";
-import firebase from "firebase";
+
 export default {
   data() {
     return {
@@ -61,15 +63,11 @@ export default {
 
   mounted() {
     for (let ref in this.$refs) {
-      // console.log(this.$refs[ref]);
-      const autocomplete = new google.maps.places.Autocomplete(
-        this.$refs[ref],
-        {
-          bounds: new google.maps.LatLngBounds(
-            new google.maps.LatLng(45.4215296, -75.6971931)
-          ),
-        }
-      );
+      const autocomplete = new google.maps.places.Autocomplete(this.$refs[ref], {
+        bounds: new google.maps.LatLngBounds(
+          new google.maps.LatLng(-26.351908, -48.825195)
+        ),
+      });
 
       autocomplete.addListener("place_changed", () => {
         const place = autocomplete.getPlace();
@@ -79,12 +77,12 @@ export default {
       });
     }
   },
+
   methods: {
     calculateButtonPressed() {
       this.spinner = true;
 
-      const URL = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?origins=${this.route.origin.lat},${this.route.origin.lng}&destinations=${this.route.destination.lat},${this.route.destination.lng}&key=AIzaSyDNuhIgdz72Lq9yw1Vvdg_JaQJBsk5xTrs
-`;
+      const URL = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?origins=${this.route.origin.lat},${this.route.origin.lng}&destinations=${this.route.destination.lat},${this.route.destination.lng}&key=AIzaSyAwLzswm85b7dbfsELpODKHYbnS-md7KHg`;
 
       axios
         .get(URL)
@@ -100,8 +98,6 @@ export default {
               this.route.distance = elements[0].distance;
               this.route.duration = elements[0].duration;
               this.route.color = this.getRandomColor();
-
-              this.saveRoute();
             }
             this.spinner = false;
           }
@@ -112,10 +108,7 @@ export default {
           this.spinner = false;
         });
     },
-    saveRoute() {
-      const db = firebase.firestore();
-      db.collection("routes").doc().set(this.route);
-    },
+
     getRandomColor() {
       let characters = "0123456789ABCDEF";
       let color = "#";
