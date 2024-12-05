@@ -15,7 +15,7 @@ export default {
 
     EventBus.$on("routes-data", routes => {
       this.map = new google.maps.Map(this.$refs["map"], {
-        center: new google.maps.LatLng(45.4215296, -75.6971931),
+        center: new google.maps.LatLng(-26.351908, -48.825195),
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
