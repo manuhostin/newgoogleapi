@@ -3,17 +3,17 @@
     <div class="route-list-view-header">
       <h3 class="ui header">Route List</h3>
       <select @change="sortRoute($event)">
-        <option selected disabled>Sort</option>
+        <option selected disabled>Filtrar:</option>
         <optgroup label="Distance">
-          <option value="distance-asc">short</option>
-          <option value="distance-desc">long</option>
+          <option value="distance-asc">Mais curtas:</option>
+          <option value="distance-desc">Mais longas:</option>
         </optgroup>
         <optgroup label="Duration">
-          <option value="duration-asc">fast</option>
-          <option value="duration-desc">slow</option>
+          <option value="duration-asc">Mais rápidas:</option>
+          <option value="duration-desc">Mais lentas: </option>
         </optgroup>
       </select>
-      <button class="ui button show-all" @click="showAllRoutesButtonPressed">show all</button>
+      <button class="ui button show-all" @click="showAllRoutesButtonPressed">Todas</button>
     </div>
 
     <div

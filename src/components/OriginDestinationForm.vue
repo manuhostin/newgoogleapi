@@ -6,20 +6,20 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="marker alternate icon"></i>
-            <input type="text" placeholder="Origin" ref="origin" />
+            <input type="text" placeholder="Endereço de origem" ref="origin" />
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="flag checkered icon"></i>
-            <input type="text" placeholder="Destination" ref="destination" />
+            <input type="text" placeholder="Endereço de destino" ref="destination" />
           </div>
         </div>
         <button
-          class="ui button small green"
+          class="ui button small blue"
           :class="{loading:spinner}"
           @click="calculateButtonPressed"
-        >Calculate</button>
+        >Vá</button>
       </div>
     </div>
   </section>
